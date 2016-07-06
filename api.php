@@ -6,7 +6,7 @@
 //define your token
 define("TOKEN", "addamx");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
+//$wechatObj->valid();
 //开启自动回复
 $wechatObj->responseMsg();
 
