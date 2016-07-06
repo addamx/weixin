@@ -64,6 +64,24 @@ class wechatCallbackapiTest
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //将XML消息返回公众平台
                     echo $resultStr;
+                } elseif ($keyword == "?" || $keyword == '？') {
+                    $msgType    = 'text';
+                    $contentStr = '[1]特种服务号码\n[2]银行服务号码\n[3]通讯服务号码\n请输入[]方括号的编号获取内容';
+                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    echo $resultStr;
+                } else {
+                    echo "Input something...";
+                }
+            } elseif ($msgType == 'image') {
+                if (!empty($keyword)) {
+                    //回复类型，如果是text，代表文本类型
+                    $msgType = "image";
+                    //回复内容
+                    $contentStr = "你发送的是图片";
+                    //格式文本
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //将XML消息返回公众平台
+                    echo $resultStr;
                 } else {
                     echo "Input something...";
                 }
