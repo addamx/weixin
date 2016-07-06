@@ -2,7 +2,7 @@
 /**
   * wechat php test
   */
-
+text
 //define your token
 define("TOKEN", "addamx");
 $wechatObj = new wechatCallbackapiTest();
