@@ -76,8 +76,8 @@ EOF;
                     $msgType = 'music';
                     $title == '骑士王の夸り';
                     $desc == '<<骑士王の夸り>>';
-                    $url == 'http://112.90.246.62/m10.music.126.net/20160710153602/3e9f7798a519e29b651173224432e574/ymusic/a9bd/4dfa/11ff/438db50d5ab513f11f26d6021801460a.mp3';
-                    $hqurl == 'hhttp://112.90.246.62/m10.music.126.net/20160710153602/3e9f7798a519e29b651173224432e574/ymusic/a9bd/4dfa/11ff/438db50d5ab513f11f26d6021801460a.mp3';
+                    $url == 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Anthem_of_Europe_%28US_Navy_instrumental_short_version%29.ogg';
+                    $hqurl == 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Anthem_of_Europe_%28US_Navy_instrumental_short_version%29.ogg';
                     $resultStr = sprintf($musicTpl, $fromUsername, $toUsername, $time, $msgType, $title, $desc, $url, $hqurl);
 
                     //$msgType    = 'text';
