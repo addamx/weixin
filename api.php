@@ -55,7 +55,7 @@ class wechatCallbackapiTest
 							<MsgId>0</MsgId>
 							</xml>";
             if ($msgType == 'text') {
-                if (!empty($keyword)) {
+                if ($keyword == "文本") {
                     //回复类型，如果是text，代表文本类型
                     $msgType = "text";
                     //回复内容
@@ -70,7 +70,7 @@ class wechatCallbackapiTest
                     $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     echo $resultStr;
                 } else {
-                    echo "Input something...";
+                    echo "输入无效";
                 }
             } elseif ($msgType == 'image') {
                 if (!empty($keyword)) {
