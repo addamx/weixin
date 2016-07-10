@@ -59,19 +59,20 @@ class wechatCallbackapiTest
                     //回复类型，如果是text，代表文本类型
                     $msgType = "text";
                     //回复内容
-                    $contentStr = "你发送的文本消息:" . $keyword;
-                    //格式文本
-                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    //将XML消息返回公众平台
-                    echo $resultStr;
+                    $contentStr = "接受文本信息成功";
+
                 } elseif ($keyword == "?" || $keyword == '？') {
                     $msgType    = 'text';
-                    $contentStr = '[1]特种服务号码\n[2]银行服务号码\n[3]通讯服务号码\n请输入[]方括号的编号获取内容';
-                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    echo $resultStr;
+                    $contentStr = '[1]特种服务号码\r\n[2]银行服务号码\r\n[3]通讯服务号码\r\n请输入[]方括号的编号获取内容';
                 } else {
-                    echo "输入无效";
+                    $msgType    = 'text';
+                    $contentStr = "输入无效";
                 }
+
+                //格式文本
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                echo $resultStr;
+
             } elseif ($msgType == 'image') {
                 if (!empty($keyword)) {
                     //回复类型，如果是text，代表文本类型
@@ -82,13 +83,11 @@ class wechatCallbackapiTest
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //将XML消息返回公众平台
                     echo $resultStr;
-                } else {
-                    echo "Input something...";
                 }
             }
 
         } else {
-            echo "";
+            echo "no post data";
             exit;
         }
     }
