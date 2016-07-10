@@ -46,14 +46,30 @@ class wechatCallbackapiTest
             $msgType = $postObj->MsgType;
             $time    = time();
             //文本模板
-            $textTpl = "<xml>
-							<ToUserName><![CDATA[%s]]></ToUserName>
-							<FromUserName><![CDATA[%s]]></FromUserName>
-							<CreateTime>%s</CreateTime>
-							<MsgType><![CDATA[%s]]></MsgType>
-							<Content><![CDATA[%s]]></Content>
-							<MsgId>0</MsgId>
-							</xml>";
+            $textTpl = <<<EOF
+            <xml>
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[%s]]></MsgType>
+            <Content><![CDATA[%s]]></Content>
+            </xml>
+EOF;
+            $musicTpl = <<<EOF
+            <xml>
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[%s]]></MsgType>
+            <Music>
+            <Title><![CDATA[%s]]></Title>
+            <Description><![CDATA[%s]]></Description>
+            <MusicUrl><![CDATA[%s]]></MusicUrl>
+            <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
+            <ThumbMediaId><![CDATA[media_id]]></ThumbMediaId>
+            </Music>
+            </xml>
+EOF;
             if ($msgType == 'text') {
                 if ($keyword == "文本") {
                     //回复类型，如果是text，代表文本类型
@@ -64,13 +80,27 @@ class wechatCallbackapiTest
                 } elseif ($keyword == "?" || $keyword == '？') {
                     $msgType    = 'text';
                     $contentStr = "[1]特种服务号码\n[2]银行服务号码\n[3]通讯服务号码\n请输入[]方括号的编号获取内容";
+                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                } elseif ($keyword == '1') {
+                    $msgType    = 'text';
+                    $contentStr = "特种服务号码: 警察110, 火警119";
+                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                } elseif ($keyword == '音乐' || $keyword == 'mp3') {
+                    $msgType = 'music';
+                    $title == '骑士王の夸り';
+                    $desc == '<<骑士王の夸り>>';
+                    $url == 'https://addamx.herokuapp.com/骑士王の夸り.mp3';
+                    $hqurl == 'https://addamx.herokuapp.com/骑士王の夸り.mp3';
+                    $resultStr = sprintf($musicTpl, $fromUsername, $toUsername, $time, $msgType, $title, $desc, $url, $hqurl);
+
                 } else {
                     $msgType    = 'text';
                     $contentStr = "输入无效";
+                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 }
 
                 //格式文本
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
                 echo $resultStr;
 
             } elseif ($msgType == 'image') {
