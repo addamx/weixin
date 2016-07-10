@@ -59,7 +59,7 @@ class wechatCallbackapiTest
                     //回复类型，如果是text，代表文本类型
                     $msgType = "text";
                     //回复内容
-                    $contentStr = "你发送的文本消息:" . $postObj->Content;
+                    $contentStr = "你发送的文本消息:" . $keyword;
                     //格式文本
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //将XML消息返回公众平台
