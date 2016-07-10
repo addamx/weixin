@@ -80,9 +80,9 @@ EOF;
                     $hqurl == 'hhttp://112.90.246.62/m10.music.126.net/20160710153602/3e9f7798a519e29b651173224432e574/ymusic/a9bd/4dfa/11ff/438db50d5ab513f11f26d6021801460a.mp3';
                     $resultStr = sprintf($musicTpl, $fromUsername, $toUsername, $time, $msgType, $title, $desc, $url, $hqurl);
 
-                    $msgType    = 'text';
-                    $contentStr = $resultStr;
-                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //$msgType    = 'text';
+                    //$contentStr = $resultStr;
+                    //$resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
 
                 } else {
                     $msgType    = 'text';
