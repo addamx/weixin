@@ -46,7 +46,7 @@ class wechatCallbackapiTest
             $msgType = $postObj->MsgType;
             $time    = time();
             //文本模板
-            $textTpl = <<<EOF
+            $textTpl = <<<'EOF'
             <xml>
             <ToUserName><![CDATA[%s]]></ToUserName>
             <FromUserName><![CDATA[%s]]></FromUserName>
@@ -55,7 +55,7 @@ class wechatCallbackapiTest
             <Content><![CDATA[%s]]></Content>
             </xml>
 EOF;
-            $musicTpl = <<<EOF
+            $musicTpl = <<<'EOF'
             <xml>
             <ToUserName><![CDATA[%s]]></ToUserName>
             <FromUserName><![CDATA[%s]]></FromUserName>
