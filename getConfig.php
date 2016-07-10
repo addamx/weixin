@@ -30,10 +30,8 @@ if (!isset($AccessToken['errcode'])) {
 $IpList = getIpList($AccessToken['access_token']);
 
 if (!isset($IpList['errcode'])) {
-    print_r($IpList);
+    //print_r($IpList);
 } else {
     echo $IpList['errmsg'];
     exit;
 }
-
-print_r($IpList);

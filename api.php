@@ -66,7 +66,6 @@ EOF;
             <Description><![CDATA[%s]]></Description>
             <MusicUrl><![CDATA[%s]]></MusicUrl>
             <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
-            <ThumbMediaId><![CDATA[media_id]]></ThumbMediaId>
             </Music>
             </xml>
 EOF;
@@ -76,6 +75,7 @@ EOF;
                     $msgType = "text";
                     //回复内容
                     $contentStr = "接受文本信息成功";
+                    $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
 
                 } elseif ($keyword == "?" || $keyword == '？') {
                     $msgType    = 'text';
@@ -89,8 +89,8 @@ EOF;
                     $msgType = 'music';
                     $title == '骑士王の夸り';
                     $desc == '<<骑士王の夸り>>';
-                    $url == 'https://addamx.herokuapp.com/骑士王の夸り.mp3';
-                    $hqurl == 'https://addamx.herokuapp.com/骑士王の夸り.mp3';
+                    $url == 'http://112.90.246.62/m10.music.126.net/20160710153602/3e9f7798a519e29b651173224432e574/ymusic/a9bd/4dfa/11ff/438db50d5ab513f11f26d6021801460a.mp3';
+                    $hqurl == 'hhttp://112.90.246.62/m10.music.126.net/20160710153602/3e9f7798a519e29b651173224432e574/ymusic/a9bd/4dfa/11ff/438db50d5ab513f11f26d6021801460a.mp3';
                     $resultStr = sprintf($musicTpl, $fromUsername, $toUsername, $time, $msgType, $title, $desc, $url, $hqurl);
 
                 } else {
