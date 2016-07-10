@@ -34,7 +34,7 @@ class wechatCallbackapiTest
             /* libxml_disable_entity_loader is to prevent XML eXternal Entity Injection,
             the best way is to check the validity of xml by yourself */
             libxml_disable_entity_loader(true);
-            //通过simpleXML解析
+            //通过simpleXML解析 "LIBXML_NOCDATA":Merge CDATA as text nodes
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             //手机端
             $fromUsername = $postObj->FromUserName;
@@ -52,14 +52,14 @@ class wechatCallbackapiTest
 							<CreateTime>%s</CreateTime>
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
-							<FuncFlag>0</FuncFlag>
+							<MsgId>0</MsgId>
 							</xml>";
             if ($msgType == 'text') {
                 if (!empty($keyword)) {
                     //回复类型，如果是text，代表文本类型
                     $msgType = "text";
                     //回复内容
-                    $contentStr = "你发送的文本消息";
+                    $contentStr = "你发送的文本消息:" . $postObj->Content;
                     //格式文本
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //将XML消息返回公众平台
@@ -118,4 +118,5 @@ class wechatCallbackapiTest
             return false;
         }
     }
+
 }
