@@ -63,7 +63,7 @@ class wechatCallbackapiTest
 
                 } elseif ($keyword == "?" || $keyword == '？') {
                     $msgType    = 'text';
-                    $contentStr = '[1]特种服务号码\r\n[2]银行服务号码\r\n[3]通讯服务号码\r\n请输入[]方括号的编号获取内容';
+                    $contentStr = "[1]特种服务号码\n[2]银行服务号码\n[3]通讯服务号码\n请输入[]方括号的编号获取内容";
                 } else {
                     $msgType    = 'text';
                     $contentStr = "输入无效";
